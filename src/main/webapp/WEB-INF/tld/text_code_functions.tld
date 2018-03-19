@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+	version="2.0">
+	<description>TextConvert</description>
+	<tlib-version>1.0</tlib-version>
+	<short-name>cdc</short-name>
+	<uri>http://youlanw.com/tags/text_code_functions</uri>
+	
+	<function>
+		<description>将城市限制转换成文字</description>
+		<name>convertCity</name>
+		<function-class>com.ylw.taglib.TextCodeTag</function-class>
+		<function-signature>java.lang.String convertCity(java.lang.Long)</function-signature>
+	</function>
+	<function>
+		<description>查看是否含有改标签，</description>
+		<name>containsLables</name>
+		<function-class>com.ylw.taglib.TextCodeTag</function-class>
+		<function-signature>java.lang.String containsLables(java.lang.String, java.lang.String)</function-signature>
+	</function>
+	<function>
+		<description>将性别限制转换成文字</description>
+		<name>convertGenderLimit</name>
+		<function-class>com.ylw.taglib.TextCodeTag</function-class>
+		<function-signature>java.lang.String convertGenderLimit(java.lang.Integer)</function-signature>
+	</function>
+	<function>
+		<description>高亮文字显示</description>
+		<name>highlightText</name>
+		<function-class>com.ylw.taglib.TextCodeTag</function-class>
+		<function-signature>java.lang.String highlightText(java.lang.String, java.lang.String)</function-signature>
+	</function>
+	
+	<function>
+		<description>截取文字显示</description>
+		<name>subString</name>
+		<function-class>com.ylw.taglib.TextCodeTag</function-class>
+		<function-signature>java.lang.String subString(java.lang.String, java.lang.Integer)</function-signature>
+	</function>
+	<function>
+		<description>截取纯文字显示</description>
+		<name>subText</name>
+		<function-class>com.ylw.taglib.TextCodeTag</function-class>
+		<function-signature>java.lang.String subText(java.lang.String, java.lang.Integer)</function-signature>
+	</function>
+	
+	<function>
+		<description>还剩多少天</description>
+		<name>dayLeft</name>
+		<function-class>com.ylw.taglib.TextCodeTag</function-class>
+		<function-signature>java.lang.Integer dayLeft(java.util.Date)</function-signature>
+	</function>
+	
+	<function>
+		<description>多少天之前</description>
+		<name>dayAfter</name>
+		<function-class>com.ylw.taglib.TextCodeTag</function-class>
+		<function-signature>java.lang.String dayAfter(java.util.Date)</function-signature>
+	</function>
+	
+	<function>
+		<description>得到薪资描述的模板</description>
+		<name>getSalarydescModel</name>
+		<function-class>com.ylw.taglib.TextCodeTag</function-class>
+		<function-signature>java.lang.String getSalarydescModel()</function-signature>
+	</function>
+	
+	<function>
+		<description>得到职位描述的模板</description>
+		<name>getWorkdescModel</name>
+		<function-class>com.ylw.taglib.TextCodeTag</function-class>
+		<function-signature>java.lang.String getWorkdescModel()</function-signature>
+	</function>
+	<function>
+		<description>得到职位要求的模板</description>
+		<name>getDemanddescModel</name>
+		<function-class>com.ylw.taglib.TextCodeTag</function-class>
+		<function-signature>java.lang.String getDemanddescModel()</function-signature>
+	</function>
+	<function>
+		<description>得到吃住情况的模板</description>
+		<name>getMealsdescModel</name>
+		<function-class>com.ylw.taglib.TextCodeTag</function-class>
+		<function-signature>java.lang.String getMealsdescModel()</function-signature>
+	</function>
+	<function>
+		<description>得到福利情况的模板</description>
+		<name>getWelfaredescModel</name>
+		<function-class>com.ylw.taglib.TextCodeTag</function-class>
+		<function-signature>java.lang.String getWelfaredescModel()</function-signature>
+	</function>
+	
+	<function>
+		<description>得到热词的值</description>
+		<name>getHotWordValue</name>
+		<function-class>com.ylw.taglib.TextCodeTag</function-class>
+		<function-signature>java.lang.String getHotWordValue(org.jdom2.Element,java.lang.String)</function-signature>
+	</function>
+	
+</taglib>

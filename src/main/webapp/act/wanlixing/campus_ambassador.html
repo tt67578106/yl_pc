@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" class="ca_body">
+<head>
+<meta charset="UTF-8">
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+<link rel="stylesheet" href="/act/wanlixing/css/jiuyewanlixing.css" />
+<link rel="stylesheet" href="/act/wanlixing/css/_layer.css" />
+<script type="text/javascript" src="/static/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="/act/wanlixing/js/layer.min.js"></script>
+<title>校园大使_优蓝网</title></head>
+<body>
+
+	<!---->
+	<div class="ca_poster"></div>
+	<!---->
+	
+	<div class="W990 ca_index">
+		<img src="images/jy/ca_index.png" alt="" />
+		<a href="javascript:;" class="ca_signup ca_signup_trigger"></a>
+		<a href="javascript:;" class="ca_signup2 ca_signup_trigger">&nbsp;</a>
+		
+		<div class="shareto">
+				<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more"></a><a title="分享到微信" href="#" class="bds_weixin" data-cmd="weixin"></a><a title="分享到QQ空间" href="#" class="bds_qzone" data-cmd="qzone"></a><a title="分享到新浪微博" href="#" class="bds_tsina" data-cmd="tsina"></a><a title="分享到腾讯微博" href="#" class="bds_tqq" data-cmd="tqq"></a><a title="分享到人人网" href="#" class="bds_renren" data-cmd="renren"></a><a title="分享到QQ好友" href="#" class="bds_sqq" data-cmd="sqq"></a><a title="分享到豆瓣网" href="#" class="bds_douban" data-cmd="douban"></a><a title="分享到百度贴吧" href="#" class="bds_tieba" data-cmd="tieba"></a><a title="分享到天涯社区" href="#" class="bds_ty" data-cmd="ty"></a><a title="分享到和讯" href="#" class="bds_hx" data-cmd="hx"></a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"32"},"share":{},"image":{"viewList":["weixin","qzone","tsina","tqq","renren","sqq","douban","tieba","ty","hx"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["weixin","qzone","tsina","tqq","renren","sqq","douban","tieba","ty","hx"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+		</div>
+	</div>
+	
+	<!---->
+	<div class="ca_QR">
+		<span class="to_top">返回顶部</span>
+	</div>
+	<!---->
+	
+
+	
+<script type="text/javascript">
+$(function(){
+	//报名须知
+	$('.ca_signup_trigger').click(function(){
+		console.info(12);
+		var layer = $.layer({
+			type: 2,
+			title: '校园大使报名',
+			shadeClose: true,
+			area : ['900px' , '550px'],
+			/*offset : ['130px', ''],*/
+			offset: [($(window).height() - 550)/2+'px', ''],
+			iframe: {src: '/act/wanlixing/campus_ambassador_layer.html'}
+		});
+	});
+	//返回顶部
+	$(window).scroll(function(){
+		if ($(window).scrollTop()>100)
+		{$('.to_top').fadeIn(500)}
+		else{$('.to_top').fadeOut(500);}
+		
+	});
+	$(".to_top").click(function(){
+		$('body,html').animate({scrollTop:0},500);
+		return false;
+    });
+	
+});
+</script>
+
+</body>
+</html>

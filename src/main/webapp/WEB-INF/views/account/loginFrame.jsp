@@ -1,0 +1,257 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="ctx" value="${pageContext.request.scheme}://${pageContext.request.serverName}${pageContext.request.contextPath}" />
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="${ctx}/static/css/common.css" rel="stylesheet" type="text/css" />
+<title></title>
+<style type="text/css">
+body{overflow:hidden;}
+</style>
+</head>
+
+<body style="min-width: 100%;">
+
+
+ <!--登录-->
+    <div class="login-form mt0 hide" id="login-div" >
+    			<div class="login-l">
+		 <form id="form_user" action="" method="post">
+	         <input type="hidden" name="clientId" id="hidden_fingerprint_id" />
+	        <div class="form-each mt85">
+	        	<input type="text" class="form-each-input" placeholder="请输入正确的11位手机号" id="txt_reg_user_loginname" name="loginname" maxlength="11"/>
+	        	<p class="tips hide"></p>
+	        </div>
+	        <div class="form-each form-code">
+	        	<input type="text" class="form-each-input" id="txt_reg_vali_user" name="thekey" maxlength="4" placeholder="请输入验证码"/>
+	        	<span class="send-span" onclick="sendCode()">获取验证码</span>
+	        	<p class="tips hide"></p>
+	        </div>
+	        <!-- <div class="reg-tips hide  div-voice">一直收不到短信？点击发送<a href="javascript:;" class="a-blue send-voice" onclick="sendVoice()">语音验证码</a></div> -->
+	        <div class="form-each hide div_name">
+	        	<input type="text" id="txt_reg_user_name" name="name" class="form-each-input" placeholder="请输入您的真实姓名"/>
+	        	<p class="tips hide"></p>
+	        </div>
+	        <div class="form-each"><input type="button" id="btn_reg_user" value="登录" class="btn-g bdr0 btn-green"/></div>
+	        <div class="form-each"><p  class="c999">点击登录表示您已阅读并同意<a href="${ctx }/about/agreement" class="black-link">《优蓝网用户协议》</a></p></div>
+		    <div class="clear"></div>
+	    </form>
+	    </div>
+	    <div class="login-m"></div>
+	    <div class="login-r">
+	    	<p class="f26 a-blue"><strong>下载优蓝APP</strong></p>
+	    	<p>手机报名&nbsp;&nbsp;入职速度快50%</p>
+	    	<div class="er-code">
+	    		<img src="${ctx }/static/images/data/img-code2.png" />
+	    		<p>扫一扫即刻体验</p>
+	    	</div>
+	    </div>
+	</div>
+    <!--/登录-->
+	<!--发送短信验证码-->
+	<div class="code-layer hide">
+		<div class="title-box">
+	        <div class="inner"><span class="title">发送短信验证码</span><span class="close">&times;</span></div>
+	    </div>
+	    <div class="reg-div">
+	        <div class="input">
+	            <input class="text-input tip-text form-each-input" id="input_reg_vali_code"   type="text" maxlength="3" pattern="\d+" placeholder="请输入右边的计算答案"/>
+	            <img src="${ctx}/verification/reg.jpg?" class="pic-code"  onclick="this.src=this.src+Math.random()" alt="验证码" style="width: 90px;height: 40px;margin-left: 5px; "/>
+	            <span class="pic-code-text">
+	                  <p>看不清</p>
+	                  <p>换一张</p>
+	            </span>
+	        </div>
+	        <div class="reg-tips error error_msg_valicodeu"></div>
+	        <label class="btn-g-out mt10"><input type="button" value="确定" class="btn-g w160 btn_reg_vali_code"/></label>
+	    </div>
+	</div>
+	<!--/发送短信验证码--> 
+<script type="text/javascript" src="${ctx}/static/js/jquery-1.11.1.min.js"></script>
+<script src="${ctx}/static/js/layer.min.js"></script>
+<script type="text/javascript">
+	var name_reg = /((^[\u4E00-\u9FA5]{2,12}$)|(^[a-zA-Z]{3,24}$))/;
+	$(function(){
+		var index = parent.layer.getFrameIndex(window.name);
+		$('#login-div').show();
+		//更换验证码
+		$('.pic-code-text').click(function(){
+			$(this).prev().click();
+		})
+		
+		$("#txt_reg_user_loginname").blur(function(){
+			if(!/^1[3-9]\d{9}/.test($.trim($(this).val()))){
+				$('.tips').hide();
+				$(this).parent().find('.tips').show();
+				$(this).parent().find('.tips').html("请输入正确位手机号码！");
+			}else{
+				$(this).parent().find('.tips').hide();
+			}
+		});
+		$("#txt_reg_vali_user").blur(function(){
+			if($.trim($(this).val()).length<1){
+				$('.tips').hide();
+				$(this).parent().find('.tips').show();
+				$(this).parent().find('.tips').html("请输入验证码！");
+			}else{
+				$(this).parent().find('.tips').hide();
+			}
+		});
+		$("#txt_reg_user_name").blur(function(){
+			if(!name_reg.test($(this).val())){
+					$('.tips').hide();
+					$(this).parent().find('.tips').show();
+					$(this).parent().find('.tips').html("请输入您的姓名（2-12位的汉字或3-24位的英文）");
+			}else{
+				$(this).parent().find('.tips').hide();
+			}
+		});
+		//个人用户注册
+		$("#btn_reg_user").click(function(){
+			var backUrl = "${url}";
+			if(userValidate()){
+				$("#btn_reg_user").unbind();
+				$.post("${ctx}/login",$("#form_user").serialize(),function(result){
+					if(result=="success"){
+						if(backUrl!=null&&backUrl!=''&&backUrl.length>0){
+							window.location.href = backUrl;
+						}else{
+							parent.layer.msg("恭喜您登录成功！", 2, 1);
+							parent.reload();
+							parent.layer.close(index); //执行关闭
+							parent.document.getElementById("link_login").remove();
+						}
+					}else{
+						$("#txt_reg_vali_user").focus();
+						$("#txt_reg_vali_user").parent().find('.tips').show();
+						$("#txt_reg_vali_user").parent().find('.tips').html("验证码错误！");
+					}
+				})
+			}
+		});
+		//输入验证码
+		$(".btn_reg_vali_code").click(function(){
+			valiCode();
+		});
+});
+
+function valiCode(){
+	   var value = $("#input_reg_vali_code").val();
+		$.post("${ctx}/verification/valiCode",{"mobile":$("#txt_reg_user_loginname").val(),"type":"reg","value":value}, function(result){
+			if(result == "success"){
+				layer.closeAll();
+				userGainkey('');
+				$(".error_msg_valicodeu").html("");
+			}else{
+				$(".error_msg_valicodeu").html("验证码计算不正确");
+			}
+		});
+}
+
+function userValidate(){
+	var m = $.trim($("#txt_reg_user_loginname").val());
+	var v = $.trim($("#txt_reg_vali_user").val());
+	var p = $.trim($("#txt_reg_user_name").val());
+	$('.tips').hide();
+	if(!/^1[3-9]\d{9}/.test(m)){
+		$("#txt_reg_user_loginname").focus();
+		$("#txt_reg_user_loginname").parent().find('.tips').show();
+		$("#txt_reg_user_loginname").parent().find('.tips').html("请输入正确位手机号码！");
+		return false;
+	}else if (v.length < 1) {
+		$("#txt_reg_vali_user").focus();
+		$("#txt_reg_vali_user").parent().find('.tips').show();
+		$("#txt_reg_vali_user").parent().find('.tips').html("请输入验证码！");
+		return false;
+	}else if(!$(".div_name").hasClass("hide")&&!name_reg.test(p)){
+		$("#txt_reg_user_name").focus();
+		$("#txt_reg_user_name").parent().find('.tips').show();
+		$("#txt_reg_user_name").parent().find('.tips').html("请输入您的姓名（2-12位的汉字或3-24位的英文）");
+		return false;
+	}
+	return true;
+}
+//发送短信验证码
+function sendCode(){
+		var m_reg=/^1[3-9][0-9]{9}$/i;
+		var mobile = $("#txt_reg_user_loginname").val();
+		$('.tips').hide();
+		if(m_reg.test(mobile)){
+			$.post("${ctx}/signup/isactivate",{mobile:mobile},function(data){
+				if(data=="failure"){
+					$(".div_name").removeClass("hide");
+				}else {
+					$(".div_name").addClass("hide");
+				}
+				 $.layer({
+		             type: 1,
+		             title: false,
+		             closeBtn:false,
+		             shadeClose: true,
+		             area : ['360px' , '230px'],
+		              page : {dom : '.code-layer'}
+		             });
+			});
+		}else{
+			$("#txt_reg_user_loginname").parent().find('.tips').show();
+			$("#txt_reg_user_loginname").parent().find('.tips').html("您输入的手机号码格式不正确！");
+		}
+     //点击关闭按钮 关闭弹出层
+     $('.code-layer .close').click(function(){
+         layer.closeAll();
+     })
+}
+//发送验证码
+function userGainkey(type){
+		var m_reg=/^1[3-9][0-9]{9}$/i;
+		var mobile = $("#txt_reg_user_loginname").val();
+		$('.tips').hide();
+		if(m_reg.test(mobile)){
+			$('.send-voice').attr("onclick", "");
+			$(".send-span").attr("onclick", "");
+			$(".div-voice").show();
+			$(".send-span").addClass("send-disabled");
+			$.post("${ctx}/register/sendCode",{mobile:mobile,type:type,currentValue:$("#input_reg_vali_code").val()},function(data){
+				if(data=="success"){
+					$("#txt_reg_user_loginname").parent().find('.tips').hide();
+					var thenum = 60;
+					var timmer = setInterval(function(){
+						$(".send-span").html(thenum+'s后可以重新获取');
+						thenum--;
+						if(thenum==-1){
+							clearInterval(timmer);
+							$(".send-span").removeClass("send-disabled");
+							//$('.send-voice').attr("onclick", "sendVoice()");
+				   			$(".send-span").attr("onclick", "sendCode()");
+							$(".send-span").html("获取手机验证码");
+						}
+					},1000);
+				}else if(data=="frozen"){
+					$("#txt_reg_user_loginname").parent().find('.tips').show();
+					$("#txt_reg_user_loginname").parent().find('.tips').html("该手机号今天收到的短信已达到上限！");
+					$(".div-voice").hide();
+					//$('.send-voice').attr("onclick", "sendVoice()");
+			   		$(".send-span").attr("onclick", "sendCode()");
+					$(".send-span").removeClass("send-disabled");
+				}else{
+					$("#txt_reg_user_loginname").parent().find('.tips').show();
+					$("#txt_reg_user_loginname").parent().find('.tips').html("验证码发送失败请您输入的检查手机号！");
+					$(".div-voice").hide();
+					//$('.send-voice').attr("onclick", "sendVoice()");
+			   		$(".send-span").attr("onclick", "sendCode()");
+					$(".send-span").removeClass("send-disabled");
+				}
+			});
+		}
+		else{
+			$("#txt_reg_user_loginname").parent().find('.tips').show();
+			$("#txt_reg_user_loginname").parent().find('.tips').html("您输入的手机号码格式不正确！");
+		}
+	}
+    </script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="ehcache.xsd">
+	<diskStore path="java.io.tmpdir/pc" />
+	<defaultCache maxElementsInMemory="10000" eternal="false"
+		timeToIdleSeconds="120" timeToLiveSeconds="120" overflowToDisk="true"
+		maxElementsOnDisk="10000000" diskPersistent="false"
+		diskExpiryThreadIntervalSeconds="120" memoryStoreEvictionPolicy="LRU" />
+	<cache name="staticCache" maxElementsInMemory="5000"
+		maxElementsOnDisk="10000000" eternal="true" timeToIdleSeconds="0"
+		timeToLiveSeconds="0" overflowToDisk="true" />
+	<!-- 登录记录缓存 锁定10分钟 -->
+    <cache name="passwordRetryCache"
+           maxEntriesLocalHeap="2000"
+           eternal="false"
+           timeToIdleSeconds="3600"
+           timeToLiveSeconds="0"
+           overflowToDisk="false"
+           statistics="true">
+    </cache>
+    
+    <cache name="smscache"
+    	   maxEntriesLocalHeap="2000"
+           eternal="false"
+           timeToLiveSeconds="1800"
+           overflowToDisk="false"
+           statistics="true">
+    </cache>
+     <!-- 短信发送次数限制 -->
+    <cache name="smscacheLimit"
+    	   maxEntriesLocalHeap="2000"
+           eternal="false"
+           timeToLiveSeconds="86400"
+           overflowToDisk="false"
+           statistics="true">
+    </cache>
+    
+    <!-- 短信验证码值存储 -->
+    <cache name="smscacheValiCode"
+    	   maxEntriesLocalHeap="2000"
+           eternal="false"
+           timeToLiveSeconds="86400"
+           overflowToDisk="false"
+           statistics="true">
+    </cache>
+    <cache name="quicksignupcache"
+    	   maxEntriesLocalHeap="2000"
+           eternal="false"
+           timeToLiveSeconds="7200"
+           overflowToDisk="false"
+           statistics="true">
+    </cache>
+    
+    <cache name="messageAuth"
+    	   maxEntriesLocalHeap="2000"
+           eternal="false"
+           timeToLiveSeconds="3600"
+           overflowToDisk="false"
+           statistics="true">
+    </cache>
+    <!-- 点赞缓存配置 -->
+    <cache name="pointOfPraiseCache"
+    	   maxEntriesLocalHeap="2000"
+           eternal="false"
+           timeToLiveSeconds="3600"
+           overflowToDisk="false"
+           statistics="true">
+    </cache>
+    
+    <!-- 大家都想进2000条企业缓存配置 -->
+    <cache name="allCompany"
+    	   maxEntriesLocalHeap="2000"
+           eternal="false"
+           timeToLiveSeconds="86400"
+           overflowToDisk="false"
+           statistics="true">
+    </cache>
+    
+    <!-- 根据企业id得到该企业所有的岗位-->
+    <cache name="getJobByCompanyId"
+    	   maxEntriesLocalHeap="2000"
+           eternal="false"
+           timeToLiveSeconds="3600"
+           overflowToDisk="false"
+           statistics="true">
+    </cache>
+    
+    <!-- 根据branchid得到该分站下所有的企业-->
+    <cache name="getCompanyByBranchId"
+    	   maxEntriesLocalHeap="2000"
+           eternal="false"
+           timeToLiveSeconds="86400"
+           overflowToDisk="false"
+           statistics="true">
+    </cache>
+    
+    <!-- 根据branchid得到该分站下所有的岗位-->
+    <cache name="getJobByBranchId"
+    	   maxEntriesLocalHeap="2000"
+           eternal="false"
+           timeToLiveSeconds="86400"
+           overflowToDisk="false"
+           statistics="true">
+    </cache>
+     <!-- 就业万里行图片名缓存 -->
+    <cache name="updateImagePath"
+    	   maxEntriesLocalHeap="2000"
+           eternal="false"
+           timeToLiveSeconds="3600"
+           overflowToDisk="false"
+           statistics="true">
+    </cache>
+    <!-- 就业万里行投票缓存 -->
+    <cache name="wanlixingVote"
+    	   maxEntriesLocalHeap="2000"
+           eternal="false"
+           timeToLiveSeconds="86400"
+           overflowToDisk="false"
+           statistics="true">
+    </cache>
+    <!-- 就业万里行Csrf缓存 -->
+    <cache name="legalCsrf"
+    	   maxEntriesLocalHeap="2000"
+           eternal="false"
+           timeToLiveSeconds="3600"
+           overflowToDisk="false"
+           statistics="true">
+    </cache>
+    
+    <!--申请认证证件缓存-->
+    <cache name="certificationImagePath"
+    	   maxEntriesLocalHeap="2000"
+           eternal="false"
+           timeToLiveSeconds="3600"
+           overflowToDisk="false"
+           statistics="true">
+    </cache>
+    
+    <!--热词缓存-->
+    <cache name="findhotWordCachList"
+    	   maxEntriesLocalHeap="2000"
+           eternal="false"
+           timeToLiveSeconds="1800"
+           overflowToDisk="false"
+           statistics="true">
+    </cache>
+    
+    <!-- 24小时超时 -->
+	<cache name="oneDayCache" maxEntriesLocalHeap="0" eternal="false"
+		timeToLiveSeconds="86400" overflowToDisk="false" statistics="true">
+	</cache>
+		<!-- 60分钟不访问超时 -->
+	<cache name="dieInOneHourCache" maxEntriesLocalHeap="0" eternal="false"
+		timeToIdleSeconds="3600" overflowToDisk="false" statistics="true">
+	</cache>	
+	<!-- 1分钟不访问超时 -->
+	<cache name="dieInOneMinCache" maxEntriesLocalHeap="0" eternal="false"
+		timeToIdleSeconds="60" overflowToDisk="false" statistics="true">
+    </cache>
+    <!-- 30秒钟不访问超时 -->
+	<cache name="dieInThirtySecondCache" maxEntriesLocalHeap="0" eternal="false"
+		timeToIdleSeconds="30" overflowToDisk="false" statistics="true" >
+    </cache>
+    <!-- 5秒钟不访问超时 -->
+	<cache name="dieInFiveSecondCache" maxEntriesLocalHeap="0" eternal="false"
+		timeToIdleSeconds="5" overflowToDisk="false" statistics="true" >
+    </cache>
+</ehcache>

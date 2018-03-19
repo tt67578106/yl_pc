@@ -1,0 +1,22 @@
+body,ol,ul,li,label,h1,h2,h3,h4,h5,h6,p,th,td,dl,dd,form,fieldset,legend,input,textarea,select,div,span{margin:0;padding:0;}html{background:#fff;-webkit-text-size-adjust:100%;overflow-y:auto;color:#666666;}body,button,input,select,textarea{font:12px/1.5 Microsoft YaHei,"Î¢ÈíÑÅºÚ",Tahoma,Arial,"\5b8b\4f53",sans-serif;'Hiragino Sans GB'}text-area{resize:none;overflow-y:auto;}a{text-decoration:none;color:#057CDC;}a:hover{color:#FF0000;text-decoration:underline}
+:focus{outline:0}em{font-style:normal}li{list-style:none}img{border:0;vertical-align:middle}table{border-collapse:collapse;border-spacing:0}p{word-wrap:break-word}
+.W990{width:990px;margin:0 auto;padding:0;}
+/*****/
+.ca_body{background:#218950;}
+.ca_poster{width:100%;height:784px;background:url(../images/jy/ca_poster.jpg) no-repeat center;}
+.ca_index{position:relative;top:-170px;z-index:1;}
+.ca_signup,.ca_signup2{position:absolute;width:145px;height:45px;line-height:45px;top:-49px;right:70px;}
+.ca_signup2{top:2305px;right:113px;font-size:500px;overflow:hidden;}
+
+.ca_QR{width:142px;height:227px;position:absolute;position:fixed;right:50px;top:50%;background:url(../images/jy/ca_QR.png) no-repeat;margin-top:-113px;z-index:2;}
+.ca_QR .to_top{color:#FFFFFF;font-size:14px;float:left;margin:15px 0 0 35px;cursor:pointer;display:none;}
+.ca_layer{float:left;width:858px;padding:20px;line-height:2;font-size:13px;}
+.ca_layer h2{text-align:center;font-size:16px;line-height:1;color:#217246;}
+.ca_layer h3{font-size:14px;color:#666666;height:30px;line-height:30px;margin-top:10px;}
+.ca_layer a{color:#3d845d;}
+.ca_layer .download{border:none;background:none;color:#3D845D;font-size:13px;}
+.ca_layer .download:hover{text-decoration:underline;cursor:pointer;}
+.ca_index .shareto{position:absolute;bottom:-80px;left:200px;}
+.share_bigbtn .shareto{float:left;margin:20px 0 20px 0px;}
+.jy_news_list .shareto{float:left;width:800px;}
+

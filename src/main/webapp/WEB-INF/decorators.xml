@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/WEB-INF/layouts/">
+	<excludes>
+		<pattern>/ws/*</pattern>
+		<pattern>/static/*</pattern>
+		<pattern>/job/signUpFrame*</pattern>
+		<pattern>/job/signUpQuickFrame*</pattern>
+		<pattern>/login/iframe</pattern>
+		<pattern>/login/loginUser</pattern>
+		<pattern>/register/registerUser</pattern>
+		<pattern>/my/area*</pattern>
+		<pattern>/my/changePassword*</pattern>
+		<pattern>/my/changepwd*</pattern>
+		<pattern>/register/toforgetPwd</pattern>
+		<pattern>/register/forgetPwd</pattern>
+		<pattern>/act/*</pattern>
+		<pattern>/zhaopin_*</pattern>
+		<pattern>/login*</pattern>
+		<pattern>/forgetpwd*</pattern>
+		<pattern>/register*</pattern>
+		<pattern>/enterprise/index</pattern>
+		<pattern>/trip10000/lectureDetail*</pattern>
+		<pattern>/trip10000/registration/updateProject</pattern>
+		<pattern>/trip10000/registration/signUp</pattern>
+		<pattern>/recruitment*</pattern>
+		<pattern>/recruitment*</pattern>
+	</excludes>
+	
+	<decorator name="default" page="default.jsp">
+		<pattern>/job*</pattern>
+		<pattern>/zhaopin*</pattern>
+		<pattern>/zhaogongzuo*</pattern>
+		<pattern>/search*</pattern>
+		<pattern>/company*</pattern>
+		<pattern>/mingqi*</pattern>
+		<pattern>/qiye*</pattern>
+		<pattern>/zp_*</pattern>
+		<pattern>/qy_*</pattern>
+		<pattern>/s_*</pattern>
+		<pattern>/wenda*</pattern>
+		<pattern>/signup/fastSignUp*</pattern>
+		<pattern>/*/*_*_*_*/</pattern>
+		<pattern>/tag*</pattern>
+	</decorator>
+	
+	<decorator name="noBranchDefault" page="noBranchDefault.jsp">
+		<pattern>/xiaolan*</pattern>
+		<pattern>/xl_*</pattern>
+		<pattern>/article*</pattern>
+		<pattern>/zone*</pattern>
+		<pattern>/my*</pattern>
+		<pattern>/user*</pattern>
+		<pattern>/about*</pattern>
+		<pattern>/help*</pattern>
+		<pattern>/s_articleType_*</pattern>
+		<pattern>/feedback*</pattern>
+		<pattern>/forgetpwd*</pattern>
+	</decorator>
+</decorators>  

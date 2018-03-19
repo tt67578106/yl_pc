@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 4.0//EN"
+        "http://www.tuckey.org/res/dtds/urlrewrite4.0.dtd">
+<urlrewrite>
+	
+	<!--企业岗位列表 -->
+	<rule>
+		<from>/company/job_([0-9]+)/</from>
+		<to>/company/companyDetailJobList?id=$1</to>
+	</rule>
+	<!--企业相册 -->
+	<rule>
+		<from>/company/album_([0-9]+)/</from>
+		<to>/company/companyDetailAlbum?id=$1</to>
+	</rule>
+	
+	<rule>
+		<from>/recruitment_([0-9]+).html</from>
+		<to>/recruitment/job/$1.html</to>
+	</rule>
+	<rule>
+		<from>/recruitment_([0-9]+)_([^_]+?).html</from>
+		<to>/recruitment/job/$1.html?recSource=$2</to>
+	</rule>
+	<rule>
+		<from>/recruitment_([^_]+?).html</from>
+		<to>/recruitment?recruitCode=$1</to>
+	</rule>
+	
+    <rule>
+        <from>/search/(.*)</from>
+        <to>/job/$1</to>
+    </rule>
+    <rule>
+        <from>/zhaogongzuo$</from>
+        <to>/job</to>
+    </rule>
+    <rule>
+        <from>/zhaogongzuo/(.*)</from>
+        <to>/job</to>
+    </rule>
+    <rule>
+        <from>/zhaopin$</from>
+        <to>/job</to>
+    </rule>
+    <rule>
+        <from>/zhaopin/</from>
+        <to>/job/</to>
+    </rule>
+    
+	<rule>
+		<from>/zhaopin_([0-9]+).html</from>
+		<to>/job/detail/$1.html</to>
+	</rule>
+	
+    <rule>
+        <from>/qiye$</from>
+        <to>/company</to>
+    </rule>
+    <rule>
+        <from>/mingqi$</from>
+        <to>/company/list</to>
+    </rule>
+    <rule>
+        <from>/mingqi/(.*)</from>
+        <to>/company/list</to>
+    </rule>
+    <rule>
+        <from>/qiye/</from>
+        <to>/company</to>
+    </rule>
+    <rule>
+        <from>/qiye_([0-9]+).html</from>
+        <to>/company/detail/$1.html</to>
+    </rule>
+    <rule>
+        <from>/xiaolan/(.*)</from>
+        <to>/article/$1</to>
+    </rule>
+    <rule>
+        <from>/xl_([0-9]+).html</from>
+        <to>/article/detail/$1.html</to>
+    </rule>
+    <rule>
+		<from>/s_articleType_(\d{1,2})</from>
+		<to >/article/?search_EQ_articleType=$1</to>
+	</rule>
+	<!--文章关键词聚合页面 -->
+	<rule>
+		<from>/tag_([0-9]+)/</from>
+		<to>/tag/?page=$1</to>
+	</rule>
+
+	<rule>
+		<from>/tag_([^_]+?)_([0-9]+)/</from>
+		<to>/article/?search_LIKE_keywords=$1&amp;page=$2</to>
+	</rule>
+	
+	<rule>
+		<from>/s_label_(.*)</from>
+		<to >/job/?search_EQ_cityid=0&amp;search_LIKE_jobType=job&amp;search_LIKE_searchName=$1&amp;search_LIKE_subJobType=0&amp;search_LIKE_totalsalary=0&amp;page=1</to>
+	</rule>
+	<rule>
+		<from>/s_type_(.*)</from>
+		<to >/job/?search_LIKE_jobType=$1</to>
+	</rule>
+	<rule>
+		<from>/s_cid_(\d+)</from>
+		<to >/qiye/?search_EQ_city.id=$1</to>
+	</rule>
+	<!--首页搜索 -->
+	<rule>
+		<from>/zp_auto_([^_]+?)_([0-9]+?).html</from>
+		<to>/job/?search_LIKE_searchName=$1&amp;page=$2</to>
+	</rule>
+	<rule>
+		<from>/qy_auto_([^_]+?)_([0-9]+?).html</from>
+		<to>/company/list/?search_LIKE_searchName=$1&amp;page=$2</to>
+	</rule>
+	
+	<rule>
+		<from>/wenda/so_([^_]+?)_([0-9]+?)_([0-9]+?)_([0-9]+?)/</from>
+		<to>/wenda?search_LIKE_title=$1&amp;companyId=$2&amp;jobId=$3&amp;pageNumber=$4</to>
+	</rule>
+	<!--/首页搜索 -->
+	<!--职位、企业列表搜素 -->
+	
+	<!--只选择职位类别 分页-->
+	<rule>
+		<from>/([a-z\u4e00-\u9fa5,]+?)/([0-9]+?)_([^_]+?)_([/0-9a-zA-Z\u4e00-\u9fa5]+?)_([0-9-]+?)_([0-9]+?)/</from>
+		<to>/job/?search_EQ_cityid=$2&amp;search_LIKE_jobType=$1&amp;search_LIKE_searchName=$3&amp;search_LIKE_subJobType=$4&amp;search_LIKE_totalsalary=$5&amp;page=$6</to>
+	</rule>
+	
+	
+	<rule>
+		<from>/zp_([0-9a-zA-Z]+?)_([0-9]+?)_([0-9]+?)_([0-9a-zA-Z\u4e00-\u9fa5,]+?)_([0-9a-zA-Z\u4e00-\u9fa5]+?)_([^_]+?)_([/0-9a-zA-Z\u4e00-\u9fa5]+?)_([0-9-]+?)_([0-9]+?).html</from>
+		<to>/301/joblist/?sortType=$1&amp;search_EQ_city.id=$2&amp;search_EQ_countyid=$3&amp;search_LIKE_jobLabel=$4&amp;search_LIKE_jobType=$5&amp;search_LIKE_searchName=$6&amp;search_LIKE_subJobType=$7&amp;search_LIKE_totalsalary=$8&amp;page=$9</to>
+	</rule>
+	
+	<!--<rule>
+		<from>/zp_([0-9]+?)_([^_]+?)_([^_]+?)_([^_]+?)_([0-9-]+?)_([0-9]+?).html</from>
+		<to>/company/list/?search_EQ_cityid=$1&amp;search_LIKE_jobType=$2&amp;search_LIKE_searchName=$3&amp;search_LIKE_subJobType=$4&amp;search_LIKE_totalsalary=$5&amp;page=$6</to>
+	</rule> -->
+	
+	<rule>
+		<from>/qy_([0-9a-zA-Z]+?)_([0-9]+?)_([0-9]+?)_([0-9]+?)_([0-9]+?)_([^_]+?)_([0-9]+?).html</from>
+		<to>/company/list/?sortType=$1&amp;search_EQ_cityid=$2&amp;search_EQ_countyid=$3&amp;search_EQ_industry=$4&amp;search_EQ_staffscale=$5&amp;search_LIKE_searchName=$6&amp;page=$7</to>
+	</rule>
+	<!--/职位、企业列表搜素 -->
+	<rule>
+		<from>/search_sort_(\w+)_p_(.*)_sp_(.*)_ts_(.*)_c_(\w{1,5})_d_(\w{1,5})</from>
+		<to>/search/?sortType=$1&amp;search_LIKE_jobType=$2&amp;search_LIKE_subJobType=$3&amp;search_LIKE_totalsalary=$4&amp;search_EQ_city.id=$5&amp;search_EQ_countyid=$6</to>
+	</rule>
+    <outbound-rule>
+        <note>
+            The outbound-rule specifies that when response.encodeURL is called (if you are using JSTL c:url)
+            the url /rewrite-status will be rewritten to /test/status/.
+
+            The above rule and this outbound-rule means that end users should never see the
+            url /rewrite-status only /test/status/ both in thier location bar and in hyperlinks
+            in your pages.
+        </note>
+		<from>/job/detail/([0-9]+).html</from>
+		<to>/zhaopin_$1.html</to>
+    </outbound-rule>
+	<outbound-rule>
+		<from>/article/detail/([0-9]+).html</from>
+		<to>/xl_$1.html</to>
+	</outbound-rule>
+	<outbound-rule>
+		<from>/company/detail/([0-9]+).html</from>
+		<to>/qiye_$1.html</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/wenda?jobId=([0-9]+).html</from>
+		<to>/wenda/so_0_0_$1_1/</to>
+	</outbound-rule>
+	
+	<outbound-rule>
+		<from>/wenda?companyId=([0-9]+).html</from>
+		<to>/wenda/so_0_$1_0_1/</to>
+	</outbound-rule>
+
+</urlrewrite>
+
